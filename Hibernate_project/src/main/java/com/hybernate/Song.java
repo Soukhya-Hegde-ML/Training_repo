@@ -13,6 +13,9 @@ public class Song {
     private String song_name;
     @Column(name="singer",length=50)
     private String artist;
+    @ManyToOne
+    @JoinColumn(name = "Genre_id",referencedColumnName = "genre_id")
+    private Genre genre;
     @Transient
     private String released_date;
 

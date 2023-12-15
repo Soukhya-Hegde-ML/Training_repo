@@ -9,7 +9,7 @@ public class App
     {
         SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
         Session session = sessionFactory.openSession();
-        Song song = new Song();
+
 
         boolean continueloop = true;
         while(continueloop){
@@ -23,6 +23,7 @@ public class App
                     String song_name = scanner.next();
                     System.out.println("Enter artist name");
                     String artist = scanner.next();
+                    Song song = new Song();
                     song.setSong_name(song_name);
                     song.setArtist(artist);
                     session.beginTransaction();
@@ -30,22 +31,22 @@ public class App
                     session.getTransaction().commit();
                     System.out.println("song has been saved");
                     break;
-                case 2 : song = session.get(Song.class,5);
-                    System.out.println(song);
+                case 2 : Song song1 = session.get(Song.class,5);
+                    System.out.println(song1);
                     break;
-                case 3: song = session.get(Song.class,9);
-                    song.setSong_name("This Town");
-                    song.setArtist("Niall Horan");
+                case 3: Song song2 = session.get(Song.class,9);
+                    song2.setSong_name("This Town");
+                    song2.setArtist("Niall Horan");
                     session.beginTransaction();
-                    session.update(song);
+                    session.update(song2);
                     session.getTransaction().commit();
 
-                    System.out.println("updated song :"+song);
+                    System.out.println("updated song :"+song2);
                     break;
-                case 4: song = session.get(Song.class,7);
-                    System.out.println("Deleting song : "+song);
+                case 4: Song song3 = session.get(Song.class,7);
+                    System.out.println("Deleting song : "+song3);
                     session.beginTransaction();
-                    session.delete(song);
+                    session.delete(song3);
                     session.getTransaction().commit();
 
                     break;

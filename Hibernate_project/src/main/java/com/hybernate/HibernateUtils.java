@@ -8,8 +8,10 @@ public class HibernateUtils {
     public static SessionFactory getSessionFactory(){
         if(sessionFactory==null){
             Configuration configuration = new Configuration();
-            configuration.configure();
             configuration.addAnnotatedClass(Song.class);
+            configuration.addAnnotatedClass(Genre.class);
+            configuration.configure();
+
             sessionFactory = configuration.buildSessionFactory();
         }
 
